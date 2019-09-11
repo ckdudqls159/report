@@ -1,0 +1,25 @@
+int a;
+void Cslide1Dlg::OnNMCustomdrawSlider1(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
+	a = m_sld.GetPos();
+	SetDlgItemInt(IDC_E1, a);
+	*pResult = 0;
+}
+
+CPoint pnt;
+void Cslide1Dlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (nFlags == MK_LBUTTON) {
+		CClientDC dc(this);
+		CPen pen(PS_SOLID, a, RGB(0, 255, 0));
+		dc.SelectObject(&pen);
+		dc.MoveTo(pnt);
+		dc.LineTo(point);
+	}
+	pnt = point;
+
+	CDialogEx::OnMouseMove(nFlags, point);
+}
+
+슬라이드로 굵기 조절하는 펜
