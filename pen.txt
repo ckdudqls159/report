@@ -1,0 +1,29 @@
+1. visual studio 2019를 실행한다.
+2. 새 프젝트 만들기를 누른다.
+3. 상단의 검색창에 MFC를 입력하고 MFC 앱을 더블 클릭한다.
+4. 프로젝트 이름칸에 cal 입력후 만들기를 클릭한다.
+5. 애플리케이션 종류를 여러문서에서 대화상자기반으로 바꿔주고 마침을 누른다.
+6. 오른쪽에 솔루션 탐색기에서 리소스 파일을 더블클릭한다.
+7. pen.rc를 더블클릭한다.
+8. Dialog를 더블클릭한다.
+9. IDD_pen_DIALOG를 더블클릭한다.
+10. 오른쪽의 속성창의 작은 아이콘들이 있는데 세번째 메시지아이콘을 클릭한다.
+11. WM_MOUSEMOVE를 클릭하고 OnMouseMove를 클릭한다.
+12. 161번째줄에 if (nFlags == MK_LBUTTON) {
+
+		CClientDC dc(this);
+
+		CPen pen(PS_SOLID, 16, RGB(0, 255, 0));
+
+		dc.SelectObject(&pen);
+
+		dc.MoveTo(pnt);
+
+		dc.LineTo(point);
+
+	}
+
+	pnt = point;
+
+	CDialogEx::OnMouseMove(nFlags, point); 을 입력해준다.
+13. f5를 누르고 마우스 왼쪽버튼을 누르면서 원하는 글씨를 작성하면 16픽셀의 초록색의 펜으로 글씨가 써진다.
